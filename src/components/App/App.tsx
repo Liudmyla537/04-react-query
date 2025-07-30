@@ -21,7 +21,6 @@ export default function App() {
     queryKey: ["movies", query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query.length > 0,
-    
   });
 
   const handleSearch = (newQuery: string) => {
@@ -56,7 +55,6 @@ export default function App() {
       {isError && <ErrorMessage />}
       {!isLoading && !isError && data?.results && data.results.length > 0 && (
         <>
-          
           {hasPagination && (
             <ReactPaginate
               pageCount={totalPages}
@@ -70,13 +68,11 @@ export default function App() {
               previousLabel="←"
             />
           )}
-
           <MovieGrid movies={data.results} onSelect={handleSelectMovie} />
         </>
       )}
       
       {selectedMovie && <MovieModal movie={selectedMovie} onClose={handleCloseModal} />}
-
       <Toaster position="top-right" />
     </>
   );
